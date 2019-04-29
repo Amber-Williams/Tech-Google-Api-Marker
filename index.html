@@ -9,7 +9,13 @@
     </style>
   </head>
   <body>
+    
     <div id="map"></div>
+    <div class="mapListContainer">
+        <h1>Country List</h1>
+        <ul id="mapList"></ul>
+    </div>
+
     <script>
         let locations = null;
   
@@ -30,6 +36,12 @@
           });
   
           locations.forEach((location,index) => {
+            let item = document.createElement("LI");
+            let country = document.createTextNode(location.name);
+            item.appendChild(country);
+            document.getElementById("mapList").appendChild(item);
+
+
             let marker = new google.maps.Marker({
             position: {lat: location.latitude, lng: location.longitude},
             map: map,
