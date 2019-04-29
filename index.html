@@ -3,13 +3,36 @@
   <head>
     <style>
       #map {
-        height: 400px;
-        width: 100%; 
-       }
+        height: 100%;
+        width:70vw;
+      }
+      .mapListContainer {
+        height: 100%;
+        width:30vw;
+        overflow: scroll;
+      }
+      .mapListContainer ul {
+        padding-inline-start: 30px;
+        font-size: 20px;
+      }
+      .mapListContainer h1 {
+        margin: 10px;
+        text-align: center;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: row;
+        font-family: sans-serif;
+      }
     </style>
   </head>
   <body>
-    
+
     <div id="map"></div>
     <div class="mapListContainer">
         <h1>Country List</h1>
