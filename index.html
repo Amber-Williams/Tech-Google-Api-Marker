@@ -22,6 +22,7 @@
         async function initMap() {
           await grabLocations();
           let myLatLng = {lat: 0, lng: 0};
+          let infowindow = new google.maps.InfoWindow();
   
           const map = new google.maps.Map(document.getElementById('map'), {
             zoom: 2,
@@ -33,6 +34,12 @@
             position: {lat: location.latitude, lng: location.longitude},
             map: map,
             title: location.name
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                myLatLng = {lat: location.latitude, lng: location.longitude};
+                infowindow.setContent(`<div><strong> ${location.name}</strong> <br> Capital: ${location.capital}</div>`);
+                infowindow.open(map, this);
             });
           });
         }
