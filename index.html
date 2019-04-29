@@ -11,12 +11,31 @@
   <body>
     <div id="map"></div>
     <script>
-    function initMap() {
-      let uluru = {lat: -25.344, lng: 131.036};
-      let map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-      let marker = new google.maps.Marker({position: uluru, map: map});
-    }
+        let locations = null;
+  
+        async function grabLocations(){
+          await fetch('https://s3-eu-west-1.amazonaws.com/omnifi/techtests/locations.json', {mode: 'cors'})
+            .then(res => res.json())
+            .then(res=> {locations=res})
+        }
+  
+        async function initMap() {
+          await grabLocations();
+          let myLatLng = {lat: 0, lng: 0};
+  
+          const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            center: myLatLng
+          });
+  
+          locations.forEach((location,index) => {
+            let marker = new google.maps.Marker({
+            position: {lat: location.latitude, lng: location.longitude},
+            map: map,
+            title: location.name
+            });
+          });
+        }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwO_zeKZ9hDaXiP-ZM_rrSC21X_0KoPe8&callback=initMap">
