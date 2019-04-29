@@ -1,0 +1,29 @@
+#map {
+  height: 100%;
+  width:70vw;
+}
+.mapListContainer {
+  height: 100%;
+  width:30vw;
+  overflow: scroll;
+  background: #15191c;
+}
+.mapListContainer ul {
+  padding-inline-start: 30px;
+  font-size: 20px;
+}
+.mapListContainer h1 {
+  margin: 10px;
+  text-align: center;
+  color: rgb(173, 255, 47)
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: row;
+  font-family: sans-serif;
+}
